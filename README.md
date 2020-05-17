@@ -25,7 +25,7 @@ You can of course do larger projects too but these are the downsides:
 
 # Specs/Docs
 
-##Reserved chars (includes space):
+## Reserved chars (includes space):
 (){}[] ,
 
 () same as in c,c#,js..
@@ -45,7 +45,7 @@ Each operator, built in or not, is just a function object. Some functions are ti
 rename function can rename existing and built in functions. in c++ side functions all have string names (built in and not), with a pointer to an action tree of the function.
 
 
-##Custom operators:
+## Custom operators:
 
 //All operators have same presidence
 //bioperator //eg &&
