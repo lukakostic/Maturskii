@@ -1,20 +1,73 @@
-# OAK
-Home of the Objects-Are-King language!
+# Maturskii
 
-Its a weird language where everything is an object, even classes and functions.
+Most dynamic and flexible language, making it the least safe i guess.
 
-To make a new class, you make a new objet and add the fields you want.  
-Then when you want to make an instance of a class you .clone() the class object you made!  
+##Reserved chars (includes space):
+(){}[] ,
 
-You can try to get/set any field of any object with dot (.)  
-a.x = 3;  
-print(a.x);  
-print(a.y); //error, y field does not exist  
+() same as in c,c#,js..
+<identifier>(){} for functions
+(){} for same scope functions //allow this for named functions too somehow?
+{} for object
+[] for arrays or indexing/attributes
+, like ; in c#, executes previous command or separates
 
-Functions:
-b.x = {
-ret b.y+b.c+1;
+
+##Comments:
+// /* */
+
+
+rename function can rename existing and built in functions. in c++ side functions all have string names (built in and not), with a pointer to an action tree of the function.
+
+
+##Custom operators:
+
+//All operators have same presidence
+//bioperator //eg &&
+_&_ && (a,b){
+return and(a,b),
+}),
+*_&_* spaced bioperator//eg and
+
+&_ pre operator //eg !
+*&_* spaced pre operator //eg not
+
+_& post operator //eg ++
+*_&* spaced post operator
+
+& standalone operator, so like a function //eg ;
+*&* spaced standalone operator, so like a function //eg break
+
+
+
+
+
+//declare bioperator '&'
+_$_ & (a,b){
+    return +(a,b);
 }
 
-print(b.clone().y,c=3,5);
-//prints 3+5+1 = 9
+//space not required
+c = a&b;
+
+//declare spaced bioperator 'and' (notice two _)
+*_$_* and (a,b){
+    return +(a,b);
+}
+
+//space required
+c = a and b;
+
+//pre operator
+$_ & (a){
+    return !(a);
+}
+
+//no space needed
+c = &a;
+
+//spaced pre operator
+*&_* and (a){
+    
+}
+
