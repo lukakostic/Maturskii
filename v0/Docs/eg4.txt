@@ -1,0 +1,94 @@
+a: 3
+b: 4
+
+sumFn: (a,b){
+    c: +(a,b)
+    c; //return c (push c then ; pushes stack to caller)
+    //c:;+(a,b); //assign and push to stack (::), then push local stack to caller
+
+    //clearStack()
+}
+
+sumArr: (arr){
+    sum: 0
+    all(arr,#(index,item){
+        sum: +(sum,item)
+    })
+    sum
+    ret
+}
+
+print(+("sum([1,2,3,4]):" str(sumArr([1,2,3,4]))))
+
+h: sumFn(a,b)
+//k: c wont work as c was local
+g: #sumFn(a,b) //Execute as macro, first the fn gets evaluated then the stack gets returned and 'g:' is evaluated with new stack
+k: c //works as c was same scope cuz executed as macro
+
+fn: sumFn
+
+p: +(fn(1,2),5)
+
+var: +(fn(1,2),2)
+
+arr: [1,2,var,p]
+
+//() optional if empty
+{
+    print(+("h ",str(h)," g ",str(g)," k ",str(k)," p ",str(p)," var ",str(var)," arr ",str(arr)," arr.2 ",arr.2,"\n"))
+}();
+// passing (<optional>) after a codeBlock will execute it, if # before codeBlock then as macro.
+
+obj1: new {
+color: 'black'
+size: 10
+inverted: 0
+}
+
+obj2: new //same as 'new {}'
+obj2.color: 'red' // . for literal name or number (for maps and arrays)
+obj2.$('size'): 5 // $ turns strings or variables to identifiers
+obj2.$'inverted': 0 // $<smth> passes <smth> as Identifier
+//arrays can be indexed by . <integer>
+print(+("obj1 ",str(obj1)," obj2 ",str(obj2),"\n"))
+
+macroAdd: #(a,b){+(a,b) ret} //codeBlocks starting with # are always executed as macro
+
+macroSwapByNameString: #(a,b){
+    {
+        nameA: $(a)
+        nameB: $(b)
+        temp: nameA
+        nameA: nameB
+        nameB: temp
+    }()
+    //macro but 'temp' is non macro local so it gets deleted
+}
+
+macroSwapByIdentifier: #(a,b){
+    {
+        temp: a
+        a: b
+        b: temp
+    }()
+    //macro but 'temp' is non macro local so it gets deleted
+}
+
+//macroSwapByIdentifier($var1,$var2)
+
+macroSwapByPointer: #(a,b){
+    {
+        temp: |(a) // | gets value of pointer
+        a= |(b) // = sets value of object pointer is pointing at
+        b= temp
+    }()
+}
+
+methodedObj: new {
+    color: 'black'
+    method: {
+        this.color: 'red' //'this' is the last item '.' or '@' was used on before calling method()
+    }
+}
+
+print(+("col ",methodedObj.color," colAfter ",methodedObj.method() ; methodedObj.color,"\n"))

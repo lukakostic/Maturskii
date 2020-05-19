@@ -1,0 +1,1 @@
+Svaka promenjiva koja ima reference na nju je dodeljena u mapu adresa:identifikator i dodeljen je int identifikator i referenca se serijalizuje kao taj int

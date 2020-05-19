@@ -1,0 +1,95 @@
+/*
+
+*/
+
+$([var,var5]); //declare var and var5
+//if $ then () interpret as declare function
+//if $name then 'name' is pushed as literal 'name' (used for identifiers)
+=(var,0); //var = 0
+
+//if it starts with $ its taken as a literal name
+
+// ; means execute last command on stack
+
+//local code block with no params, the () at start is optional
+{
+    =(var,5); //global var gets set to 5
+    $(var2); //new local variable
+    =(var2,2);
+}();
+
+//var2 doesnt exist here unless it was executed with ^(<codeblock>);
+
+//code block gets pushed to stack
+//() provides parameters and queues fn for execution instead of just putting it on stack
+//; executes and pushes return
+
+=(?,(condition, code){
+    $()
+    while(condition,code);
+});
+
+=(for,(iterators,condition,step,code){
+    $(#(iterators););
+    =()
+});
+
+/*
+for({$(i);=(i,0);},)
+*/
+
+=(foreach,($iterator,collection,code){
+    $(iterator, i);
+    for()
+});
+
+mulAdd(num,collection){
+=(res,0);
+//foreach i in #
+foreach(i,collection,{
+    =(res,+(res,*(i,num););); //res += i*num;
+});
+};
+
+mulAddNamedParams(num #params){
+=(res,0);
+foreach($i,#params,{
+    =(res,+(res,*(i,num););); //res += i*num;
+});
+};
+
+
+=(sum,(numArr){
+res = 0;
+for(i,#){
+    
+}
+};
+
+// + - / * % allowed in fn names
+//# signifies param list, which is just an array
+
+setVarTo3 = {
+var = 3;
+};
+
+setVarToAdd = (par1,par2){
+var = +(par1,par2);
+};
+
+
+// a function is just a code block with passed arguments
+
+print(toStr(var));
+
+fnVar = setVarTo3; //passing (<optional parameters>) after codeblock 
+
+setVarTo3(); //puts code block on stack, then () executes it
+
+fnVar(); //same
+
+print(str(var));
+
+setVarToAdd(7,2);
+
+print(str(var));

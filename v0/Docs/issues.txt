@@ -1,0 +1,4 @@
+1. Masking Re-deklaracija unutar funkcija ili menjanje postojeceg?
+Mozda da je sve re-deklaracija a kada treba menjati globalno, poslati pointer ili neki globalni _ il nesto objekat
+Ili mozda neki code block sa pristupom visim scopeovima ^{ <code> } ? 
+

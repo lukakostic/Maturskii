@@ -1,0 +1,115 @@
+int(value)
+    str to int
+num(value)
+    str to num
+str(value)
+    int to str
+    num to str
+    str to str (parse escaped chars)
+
+chToInt(char)
+    char to int (char code)
+intToCh(charCode)
+    int (char code) to char (string with 1 letter)
+
+//All these assignments can push value to stack if you add : after the assign sign: ::, =: ,  ^:
+<var>: <value/variable>
+    //assign (or declare) value to var
+<var>= <value/variable>
+    //set value of object that var (pointer) is pointing at
+    //can be used for normal variables and then acts as :
+<var>^ <value/variable>
+    //do not re-declare (in local stacks), find first variable with that Identifier in upper stacks and assign. If not found, acts as :
+
+exists(<Identifier or var>)
+    //1 if Identifier or var is declared 0 if not
+existsUp(<Identifier or var>)
+    //1 if Identifier or var declared in this or upper stacks 0 if not
+
+&<var>
+    //get pointer to var
+|<var>
+    //get value of pointer var
+
+while(condition,code)
+    //while condition code returns 1 do code
+
++(val1,val2,val3)
+    //val1 + val2 + val3
+-(base, val1, val2)
+    //base - (val1 + val2)
+/(base, val1, val2)
+    //base / (val1*val2)
+*(val1,val2,val3)
+    //val1*val2*val3
+%(base,div)
+    //base % div
+
+$<id>
+    //pass as Identifier $test = test
+$<var or literal>
+    //turns literal or var (string) to Identifier $(test) = <value of test to Identifier>, $('test') = test
+
+#<fn or fnCall>
+    //execute codeBlock in same stack (use local stack) or mark fn as macro (always use local stack)
+
+ret
+    //pushes local stack to caller stack
+
+
+;
+    //deletes last from stack
+
+~
+    //clears local stack
+
+<fn>@(a: 3,h: var)
+    //update or provide default parameters with current values
+
+
+//Logic (returns int 1 or 0) operators:
+a > b
+a < b
+a >= b
+a <= b
+a == b
+a != b
+and(a,b,c,d)
+or(a,b,c,d)
+xor(a,b,c,d)
+not(val)
+    //bool invert: 1>= to 0 and 0 to 1
+similar(a,b, margin)
+    //if similar by a margin
+
+len(array)
+    //returns array length
+
+type(var)
+    //returns type string
+
+eval(string)
+    //string to codeBlock
+
+clone(var,mode: 0,depth: 0)
+    // 'by value' = stays same, 'as X' = gets turned to X
+    //mode: 0 -> Clones var's values and references by value until depth reached, then further values in values by reference
+    //mode: 1 -> Clones var's values by value and references get cloned as values in mode: 1 with depth at depth-currentDepth until depth reached, then further values in values by reference
+    //mode: 2 -> Clones everything as reference, depth isnt needed as it naturally only goes once, //works only for maps and arrays?
+    //If non map object is passed its cloned by value unless mode: 1, then its cloned as value even if reference type
+
+refArray(arr)
+    //makes new array of same lenght as arr where every element is reference to corresponding element in arr
+
+cloneFn(fn)
+    //clones a function, useful for binding new data
+
+write(string)
+writeln(string)
+read()
+    //scanf
+readCh()
+    //read character
+
+<math fns>
+<bit shifting operators>

@@ -1,0 +1,3 @@
+? ako fn ocekuje # a ti mu das jednu vrednost autmoatski napravi kolekciju za njega
+? funkcije koje ocekuju pointere mogu da ga nadju iz vrednosti i obrnuto
+? no chars just strings of length 1
