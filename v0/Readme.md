@@ -28,7 +28,6 @@ You can of course do larger projects too but these are the downsides:
 ## reserved chars (includes space):
 ()[]{}, #$.
 
-\# executes function in same scope: #fn(),
 
 $ turns string to identifier $'id' or identifier literal $id
 
@@ -62,13 +61,27 @@ references act as pointers, but you can set actual value of the object they are 
 ## functions
 functions are also just variables
 
+{} is function body, takes no arguments
+
+(arg1,arg2){} is a function body and arguments
+
 function declaration:\
 ```
-:()
+:($fn,(arg1,arg2){})
 ```
+
+\# executes function in same scope, useful for macros: #fn(),
+
+###### #{} code block always executed in same scope
 
 function call:\
 `functionName(argument1,argument2,...)`
+
+## conditionals
+
+?({} `if condition is true (check literals), execute code block`
+
+?? `else if`
 
 ## comments:
 // /\* \*/\
