@@ -32,12 +32,12 @@ You can of course do larger projects too but these are the downsides:
 all variables are either literal or objects
 
 ## literals
-numbers  //all floats
-strings //chars are strings of length 1
-functions //more on that in #functions
+numbers  >all floats
+strings >chars are strings of length 1
+functions >more on that in #functions
 null
-//bools are 0 and >0
-//indexes and bools are internally rounded
+>bools are 0 and >0
+>indexes and bools are internally rounded
 
 ## objects
 all objects have intrinsic value (can be literal or object) and properties
@@ -52,7 +52,7 @@ functions are also just variables
 
 () same as in c,c#,js..
 <identifier>(){} for functions
-(){} for same scope functions //allow this for named functions too somehow?
+(){} for same scope functions >allow this for named functions too somehow?
 {} for object
 [] for arrays or indexing/attributes
 , like ; in c#, executes previous command or separates
