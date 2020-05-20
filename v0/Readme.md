@@ -66,8 +66,7 @@ each operator, built in or not, is just a function object. Some functions are ti
 // have a higher presidence, so // /\* will be a single line comment
 
 ## built in functions and objects
-
-### functions
+</br>
 
 `=(identifier,value)`\
 sets identifier to value
