@@ -26,9 +26,11 @@ You can of course do larger projects too but these are the downsides:
 # specs/docs
 
 ## reserved chars (includes space):
-()[], #
+()[], #$
 
 \# executes function in same scope: #fn(),
+
+$ turns string to identifier $'id' or identifier literal $id
 
 ## variables
 all variables are either literal or objects
@@ -53,8 +55,12 @@ references act as pointers, but you can set actual value of the object they are 
 ## functions
 functions are also just variables
 
+function declaration:\
+```
+:()
+```
 
-
+function call:\
 `functionName(argument1,argument2,...)`
 
 ## comments:
