@@ -17,11 +17,11 @@ Execute functions in local or global scopes, push things to global stack, and al
 Aims to unify macros and functions to use same or similar syntax
 
 You can of course do larger projects too but these are the downsides:
-> Not stricly typed, so you dont know what type or form an object is in
->? No packages/imports
-> The user can easily brake things down the line by changing some fundamental parts of the language
-> Not the fastest thing around
->? No declarations, all implicitly declarated so prone to typos
+* Not stricly typed, so you dont know what type or form an object is in
+*? No packages/imports
+* The user can easily brake things down the line by changing some fundamental parts of the language
+* Not the fastest thing around
+*? No declarations, all implicitly declarated so prone to typos
 
 # specs/docs
 
