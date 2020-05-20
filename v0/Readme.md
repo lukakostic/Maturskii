@@ -33,8 +33,8 @@ You can of course do larger projects too but these are the downsides:
 $ turns string to identifier $'id' or identifier literal $id
 
 var.property\
-var.$property\ `I D K`
-var\[$property\]\ `I D K`
+var.$property `I D K`\
+var\[$property\] `I D K`\
 var\['property'\]\
 var\[property\] `value of property`
 
