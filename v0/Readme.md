@@ -65,7 +65,34 @@ each operator, built in or not, is just a function object. Some functions are ti
 // /\* \*/\
 // have a higher presidence, so // /\* will be a single line comment
 
-## built in functions
+## built in functions and objects
+
+### functions
+
+`=(identifier,value)`\
+sets identifier to value
+
+`:(identifier,value)`\
+set identifier to reference
+
+
 
 `rename(originalName, newName)`\
 rename function can rename existing and built in functions. in c++ side functions all have string names (built in and not), with a pointer to an action tree of the function
+
+
+
+`+(a,b)`\
+adds a and b\
+if strings, concatenate\
+if numbers, subtract\
+> for bools, effectively acts as OR 
+
+`-(a,b)`\
+subtract number b from number a\
+`-(a)`\
+negate number a
+
+`*(a,b)`\
+multiplies numbers a and b\
+> for bools, effectively acts as AND
