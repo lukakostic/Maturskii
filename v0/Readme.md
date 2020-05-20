@@ -21,8 +21,10 @@ everything in {}, [], () is put into a tree containing the words inside. trees g
 `holds numeric value`
 * string literals\
 `holds id to string. string added to strings list`
+* identifier literals\
+`holds id to identifier. identifier added to identifiers list`
 * function calls
- ###### idk how to represent function calls
+ ###### idk how to represent function calls, maybe holds
 * special (reserved characters and groupings such as ??)
 * compound (bracketed), contains other tokens\
 `holds id to tree`
@@ -35,8 +37,12 @@ everything in {}, [], () is put into a tree containing the words inside. trees g
 
 # specs/docs
 
-## reserved chars (includes space):
-()[]{}, #$.
+## reserved chars:
+()[]{},#$.
+
+space and newline are separators
+
+, used to execute and separate things
 
 ###### possibly also ? if conditionals arent done with functions
 
