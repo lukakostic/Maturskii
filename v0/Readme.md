@@ -1,7 +1,7 @@
 # maturskii
 
 # concept
-quick & dirty flexible scripting and hacking-things-together language
+quick & dirty flexible scripting and hacking-things-together language\
 similar to javascript, but generally borrows concepts from many languages
 
 ## flexible, quick & dirty?
