@@ -34,6 +34,7 @@ all variables are either literal or objects
 ## literals
 numbers  //all floats
 strings //chars are strings of length 1
+functions //more on that in #functions
 null
 //bools are 0 and >0
 //indexes and bools are internally rounded
@@ -46,6 +47,8 @@ all properties are objects
 you can instantiate things as either by value or by reference
 references act as pointers, but you can set actual value of the object they are refering to
 
+## functions
+functions are also just variables
 
 () same as in c,c#,js..
 <identifier>(){} for functions
@@ -54,12 +57,15 @@ references act as pointers, but you can set actual value of the object they are 
 [] for arrays or indexing/attributes
 , like ; in c#, executes previous command or separates
 
-each operator, built in or not, is just a function object. Some functions are tied into backend, some are user made. You can see and reorder them with the replace operator.
+each operator, built in or not, is just a function object. Some functions are tied into backend, some are user made. You can see and reorder them with the replace operator
 
 
 ## comments:
 // /* */
+// have a higher presidence, so // /* will be a single line comment
 
 ## built in functions
 
-> rename function can rename existing and built in functions. in c++ side functions all have string names (built in and not), with a pointer to an action tree of the function.
+> rename(originalName, newName)
+
+rename function can rename existing and built in functions. in c++ side functions all have string names (built in and not), with a pointer to an action tree of the function
