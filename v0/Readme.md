@@ -1,7 +1,7 @@
 # maturskii
 
 # concept
-quick & dirty flexible scripting and hacking-things-together language\
+interpreted quick & dirty flexible scripting and hacking-things-together\
 similar to javascript, but generally borrows concepts from many languages
 
 ## flexible, quick & dirty?
@@ -77,7 +77,8 @@ set identifier to reference
 </br>
 
 `rename(originalName, newName)`\
-rename function can rename existing and built in functions. in c++ side functions all have string names (built in and not), with a pointer to an action tree of the function
+rename variable or function\
+in c++ side functions all have string names (built in and not), with a pointer to an action tree of the function
 
 </br>
 
