@@ -15,7 +15,7 @@ Reserved characters, numeric/string literals and identifiers into linear list. s
 everything in {}, [], () is put into a tree containing the words inside. trees put into a hashmap with id, so they can be called later.
 
 ## tokens
-* identifiers
+* identifiers\
 `holds id to identifier. identifier string added to special identifiers list`\
 * numeric literals
 * string literals `added to special strings list`
