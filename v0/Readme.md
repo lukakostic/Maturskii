@@ -26,12 +26,15 @@ You can of course do larger projects too but these are the downsides:
 # specs/docs
 
 ## reserved chars (includes space):
-()[], #$
+()[], #$.
 
 \# executes function in same scope: #fn(),
 
 $ turns string to identifier $'id' or identifier literal $id
 
+var.property\
+var.$property\
+var\['property'\]\
 var\[property\]
 
 ## variables
