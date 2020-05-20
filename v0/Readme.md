@@ -32,11 +32,11 @@ You can of course do larger projects too but these are the downsides:
 all variables are either literal or objects
 
 ## literals
-* numbers  `all floats`
-* strings  `chars are strings of length 1`
-* functions  `more on that in #functions`
+* numbers  `> all floats`
+* strings  `> chars are strings of length 1`
+* functions  `> more on that in #functions`
 * null
-* `bools are 0 and >0`
+* `> bools are 0 and >0`
 
 > indexes and bools are internally rounded
 
