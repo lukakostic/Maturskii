@@ -54,14 +54,12 @@ references act as pointers, but you can set actual value of the object they are 
 [] for arrays or indexing/attributes
 , like ; in c#, executes previous command or separates
 
-Each operator, built in or not, is just a function object. Some functions are tied into backend, some are user made. You can see and reorder them with the replace operator.
+each operator, built in or not, is just a function object. Some functions are tied into backend, some are user made. You can see and reorder them with the replace operator.
 
 
 ## comments:
 // /* */
 
+## built in functions
 
-rename function can rename existing and built in functions. in c++ side functions all have string names (built in and not), with a pointer to an action tree of the function.
-
-
-## Custom operators:
+> rename function can rename existing and built in functions. in c++ side functions all have string names (built in and not), with a pointer to an action tree of the function.
