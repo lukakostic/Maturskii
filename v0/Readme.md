@@ -1,32 +1,51 @@
-# Maturskii
+# maturskii
 
-# Concept
+# concept
+quick & dirty flexible scripting and hacking-things-together language
+similar to javascript, but generally borrows concepts from many languages
 
-Quick & dirty flexible scripting and hacking-things-together language.
+## flexible, quick & dirty?
 
-## Flexible, Quick & Dirty?
-
-Dirty because it doesnt save you froom undefined behaviour, and is very prone to it, as it lets users do almost anything.
-You can change some very fundamental parts of the language, such as renaming built in functions and operators.
+Dirty because it doesnt save you froom undefined behaviour, and is very prone to it, as it lets users do almost anything
+You can change some very fundamental parts of the language, such as renaming built in functions and operators
 Your operators can be symbols or even strings ( '&' vs 'and' )
-?You can even replace the bracket/brace/pharentese symbols to some other symbols or strings.
-But thats what makes it flexible and quick to do small scripts and projects in.
+?You can even replace the bracket/brace/pharentese symbols to some other symbols or strings
+But thats what makes it flexible and quick to do small scripts and projects in
 
-Execute functions in local or global scopes, push things to global stack, and all kinds of other crazy things.
+Execute functions in local or global scopes, push things to global stack, and all kinds of other crazy things
 
-Aims to unify macros and functions to use same or similar syntax.
+Aims to unify macros and functions to use same or similar syntax
 
 You can of course do larger projects too but these are the downsides:
-- Not stricly typed, so you dont know what type or form an object is in.
+- Not stricly typed, so you dont know what type or form an object is in
 -? No packages/imports
-- The user can easily brake things down the line by changing some fundamental parts of the language.
-- Not the fastest thing around.
+- The user can easily brake things down the line by changing some fundamental parts of the language
+- Not the fastest thing around
 -? No declarations, all implicitly declarated so prone to typos
 
-# Specs/Docs
+# specs/docs
 
-## Reserved chars (includes space):
+## reserved chars (includes space):
 (){}[] ,
+
+## variables
+all variables are either literal or objects
+
+## literals
+numbers  //all floats
+strings //chars are strings of length 1
+null
+//bools are 0 and >0
+//indexes and bools are internally rounded
+
+## objects
+all objects have intrinsic value (can be literal or object) and properties
+all properties are objects
+
+## value vs reference
+you can instantiate things as either by value or by reference
+references act as pointers, but you can set actual value of the object they are refering to
+
 
 () same as in c,c#,js..
 <identifier>(){} for functions
@@ -38,7 +57,7 @@ You can of course do larger projects too but these are the downsides:
 Each operator, built in or not, is just a function object. Some functions are tied into backend, some are user made. You can see and reorder them with the replace operator.
 
 
-## Comments:
+## comments:
 // /* */
 
 
@@ -46,53 +65,3 @@ rename function can rename existing and built in functions. in c++ side function
 
 
 ## Custom operators:
-
-//All operators have same presidence
-//bioperator //eg &&
-_&_ && (a,b){
-return and(a,b),
-}),
-*_&_* spaced bioperator//eg and
-
-&_ pre operator //eg !
-*&_* spaced pre operator //eg not
-
-_& post operator //eg ++
-*_&* spaced post operator
-
-& standalone operator, so like a function //eg ;
-*&* spaced standalone operator, so like a function //eg break
-
-
-
-
-
-//declare bioperator '&'
-_$_ & (a,b){
-    return +(a,b);
-}
-
-//space not required
-c = a&b;
-
-//declare spaced bioperator 'and' (notice two _)
-*_$_* and (a,b){
-    return +(a,b);
-}
-
-//space required
-c = a and b;
-
-//pre operator
-$_ & (a){
-    return !(a);
-}
-
-//no space needed
-c = &a;
-
-//spaced pre operator
-*&_* and (a){
-    
-}
-

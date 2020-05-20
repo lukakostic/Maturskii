@@ -19,7 +19,7 @@ int main(int argc, char* argv[]) {
 
 	t->Debug();
 
-	while(true){}
+	for(;;){}
 
 	return 0;
 }
