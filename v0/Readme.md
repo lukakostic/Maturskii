@@ -2,7 +2,7 @@
 
 # concept
 quick & dirty flexible scripting and hacking-things-together language\
-similar to javascript, but generally borrows concepts from many languages\
+similar to javascript, but generally borrows concepts from many languages
 
 ## flexible, quick & dirty?
 
@@ -10,11 +10,11 @@ Dirty because it doesnt save you froom undefined behaviour, and is very prone to
 You can change some very fundamental parts of the language, such as renaming built in functions and operators\
 Your operators can be symbols or even strings ( '&' vs 'and' )\
 ?You can even replace the bracket/brace/pharentese symbols to some other symbols or strings\
-But thats what makes it flexible and quick to do small scripts and projects in\
+But thats what makes it flexible and quick to do small scripts and projects in
 
-Execute functions in local or global scopes, push things to global stack, and all kinds of other crazy things\
+Execute functions in local or global scopes, push things to global stack, and all kinds of other crazy things
 
-Aims to unify macros and functions to use same or similar syntax\
+Aims to unify macros and functions to use same or similar syntax
 
 You can of course do larger projects too but these are the downsides:
 * Not stricly typed, so you dont know what type or form an object is in
@@ -42,11 +42,11 @@ all variables are either literal or objects
 
 ## objects
 all objects have intrinsic value (can be literal or object) and properties\
-all properties are objects\
+all properties are objects
 
 ## value vs reference
 you can instantiate things as either by value or by reference\
-references act as pointers, but you can set actual value of the object they are refering to\
+references act as pointers, but you can set actual value of the object they are refering to
 
 ## functions
 functions are also just variables\
@@ -56,9 +56,9 @@ functions are also just variables\
 (){} for same scope functions >allow this for named functions too somehow?\
 {} for object\
 [] for arrays or indexing/attributes\
-, like ; in c#, executes previous command or separates\
+, like ; in c#, executes previous command or separates
 
-each operator, built in or not, is just a function object. Some functions are tied into backend, some are user made. You can see and reorder them with the replace operator\
+each operator, built in or not, is just a function object. Some functions are tied into backend, some are user made. You can see and reorder them with the replace operator
 
 
 ## comments:
