@@ -16,7 +16,7 @@ everything in {}, [], () is put into a tree containing the words inside. trees p
 
 ## tokens
 * identifiers\
-`holds id to identifier. identifier string added to special identifiers list`\
+`holds id to identifier. identifier string added to special identifiers list`
 * numeric literals
 * string literals `added to special strings list`
 * function calls
