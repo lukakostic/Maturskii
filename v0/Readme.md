@@ -26,7 +26,9 @@ You can of course do larger projects too but these are the downsides:
 # specs/docs
 
 ## reserved chars (includes space):
-(){}[] ,
+()[],#
+
+\# executes function in same scope: #fn(),
 
 ## variables
 all variables are either literal or objects
@@ -51,15 +53,9 @@ references act as pointers, but you can set actual value of the object they are 
 ## functions
 functions are also just variables
 
-() same as in c,c#,js..\
-<identifier>(){} for functions\
-(){} for same scope functions >allow this for named functions too somehow?\
-{} for object\
-[] for arrays or indexing/attributes\
-, like ; in c#, executes previous command or separates
 
-each operator, built in or not, is just a function object. Some functions are tied into backend, some are user made. You can see and reorder them with the replace operator
 
+`functionName(argument1,argument2,...)`
 
 ## comments:
 // /\* \*/\
