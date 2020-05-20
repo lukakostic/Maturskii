@@ -77,8 +77,7 @@ set identifier to reference
 </br>
 
 `rename(originalName, newName)`\
-rename variable or function\
-in c++ side functions all have string names (built in and not), with a pointer to an action tree of the function
+rename variable or function
 
 </br>
 
