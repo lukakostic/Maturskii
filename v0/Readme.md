@@ -74,12 +74,12 @@ sets identifier to value
 `:(identifier,value)`\
 set identifier to reference
 
-</br></br>
+</br>
 
 `rename(originalName, newName)`\
 rename function can rename existing and built in functions. in c++ side functions all have string names (built in and not), with a pointer to an action tree of the function
 
-</br></br>
+</br>
 
 `+(a,b)`\
 adds a and b\
