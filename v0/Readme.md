@@ -49,7 +49,7 @@ you can instantiate things as either by value or by reference\
 references act as pointers, but you can set actual value of the object they are refering to
 
 ## functions
-functions are also just variables\
+functions are also just variables
 
 () same as in c,c#,js..\
 <identifier>(){} for functions\
@@ -67,5 +67,5 @@ each operator, built in or not, is just a function object. Some functions are ti
 
 ## built in functions
 
-> rename(originalName, newName)
+> rename(originalName, newName) \
 rename function can rename existing and built in functions. in c++ side functions all have string names (built in and not), with a pointer to an action tree of the function
