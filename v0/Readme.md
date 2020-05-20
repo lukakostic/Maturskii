@@ -3,6 +3,7 @@
 # concept
 interpreted quick & dirty flexible scripting and hacking-things-together\
 similar to javascript, but generally borrows concepts from many languages
+###### no operators, just functions
 
 # specs/docs
 
