@@ -5,10 +5,34 @@ interpreted quick & dirty flexible scripting and hacking-things-together\
 similar to javascript, but generally borrows concepts from many languages
 ###### no operators, just functions
 
+# tokenizer
+tokenization is done in 3 steps:
+
+## grouping into words
+Reserved characters, numeric/string literals and identifiers into linear list. space separates but doesnt get included in words. comma (,) does. comments ignored
+
+## bracket/brace/parenthese trees
+everything in {}, [], () is put into a tree containing the words inside. trees put into a hashmap with id, so they can be called later.
+
+## tokens
+* identifiers
+`holds id to identifier. identifier string added to special identifiers list`\
+* numeric literals
+* string literals `added to special strings list`
+* function calls
+*
+* special (reserved characters and groupings such as ??)
+* compound (bracketed), contains other tokens
+
+## executioner
+
+
 # specs/docs
 
 ## reserved chars (includes space):
 ()[]{}, #$.
+
+###### possibly also ? if conditionals arent done with functions
 
 
 $ turns string to identifier $'id' or identifier literal $id
@@ -60,6 +84,8 @@ function call:\
 `functionName(argument1,argument2,...)`
 
 ## conditionals
+
+###### for starters its only ?(condition,{})
 
 cond?{}, `if condition is >0 (check literals), execute code block`\
 cond??{}, `else if`\
