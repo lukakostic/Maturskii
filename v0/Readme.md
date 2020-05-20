@@ -61,8 +61,8 @@ each operator, built in or not, is just a function object. Some functions are ti
 
 
 ## comments:
-// /* */
-// have a higher presidence, so // /* will be a single line comment
+// /\* \*/
+// have a higher presidence, so // /\* will be a single line comment
 
 ## built in functions
 
