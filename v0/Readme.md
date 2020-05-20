@@ -79,9 +79,9 @@ function call:\
 
 ## conditionals
 
-?({} `if condition is true (check literals), execute code block`
+?(cond,{}), `if condition is >0 (check literals), execute code block`
 
-?? `else if`
+###### no else-if or else yet
 
 ## comments:
 // /\* \*/\
