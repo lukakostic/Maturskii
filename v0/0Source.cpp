@@ -9,10 +9,7 @@
 int main(int argc, char* argv[]) {
 	
 	auto t = new TokenPack(
-		"a:3\n"
-		"b:4\n"
-		"\n"
-		"\n"
+		"=($a,15)"
 	);
 
 	std::cout << "---------------";
