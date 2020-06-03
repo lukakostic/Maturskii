@@ -14,12 +14,12 @@
 int main(int argc, char* argv[]) {
 	
 	auto t = new Tokenizer_Words(
-		"a"
+		"ab ae ds"
 	);
 
-	std::cout << "---------------";
+	std::cout << "\n---------------\n";
 
-	//t->Debug();
+	t->Debug();
 
 
 

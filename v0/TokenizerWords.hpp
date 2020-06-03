@@ -59,6 +59,7 @@ struct Tokenizer_Words
     Tokenizer_Words(const std::string &code);
 
     std::size_t AddWord(std::string word);
+    std::string GetWord(std::size_t indx);
 
     void AddToken(TokenizerToken t);
     void AddToken(Token t);
@@ -69,4 +70,5 @@ struct Tokenizer_Words
     bool HandleSpecial(unsigned int helperStateGroup);
     bool HandleNormal(unsigned int helperStateGroup);
 
+    void Debug();
 };

@@ -1,5 +1,5 @@
-#pragma once
 #include <inttypes.h>
+#include <iostream>
 #include "TokenizerWords.hpp"
 
 
@@ -40,27 +40,39 @@ std::size_t Tokenizer_Words::AddWord(std::string word){
   }
   return find->second;
 }
+std::string Tokenizer_Words::GetWord(std::size_t indx){
+  auto find = word_index2str.find(indx);
+  return find->second;
+}
 
 void Tokenizer_Words::Break(){
   if(state == TokenizerWord::Normal)
   {
     AddToken(TokenizerToken::Identifier);
-    AddToken({AddWord(chars)});
+    Token t;
+    t.s = AddWord(chars);
+    AddToken(t);
   }
   else if(state == TokenizerWord::InInteger)
   {
     AddToken(TokenizerToken::LiteralInteger);
-    AddToken({std::stoll(chars)});
+    Token t;
+    t.i = std::stoll(chars);
+    AddToken(t);
   }
   else if(state == TokenizerWord::InDecimal)
   {
     AddToken(TokenizerToken::LiteralDecimal);
-    AddToken({std::stod(chars)});
+    Token t;
+    t.d = std::stod(chars);
+    AddToken(t);
   }
   else if(DecodeGroup((TokenType)state) == TokenizerWord_InStringLiteral)
   {
     AddToken(TokenizerToken::LiteralString);
-    AddToken({AddWord(chars)});
+    Token t;
+    t.s = AddWord(chars);
+    AddToken(t);
   }
 
   chars = std::string();
@@ -140,7 +152,7 @@ bool Tokenizer_Words::HandleSpecial(unsigned int helperStateGroup){
       return true;
     }
     
-    if (c == ' '){
+    if (c == ' ' || c == '\0'){
       Break();
       return true;
     }
@@ -215,4 +227,18 @@ bool Tokenizer_Words::HandleNormal(unsigned int helperStateGroup){
   }
 
   return false;
+}
+
+void Tokenizer_Words::Debug(){
+  std::size_t len = tokens.size();
+
+  for(std::size_t i = 0; i<len; i++){
+    TokenizerToken tt = (TokenizerToken)tokens[i].t;
+    if(tt == TokenizerToken::Identifier){
+      std::cout << "Identifier: [" << GetWord(tokens[++i].s) << "]\n";
+    }else{
+      std::cout << "Unknown Token\n";
+    }
+  }
+  
 }
