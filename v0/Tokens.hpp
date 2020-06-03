@@ -2,26 +2,30 @@
 #include <cstddef>
 #include <cstdint>
 
-union Token { //hopefully 64 bits depending on double size but not important
-    std::uint_fast64_t u; //instruction or index in list, unsigned integer literal?
+
+typedef uint32_t TokenType;
+
+//General Token: instruction, literal or index
+union Token {
+    TokenType t; //instruction (aka token, enum)
+    std::size_t s; //index
+    std::uint_fast64_t u; //unsigned integer literal?
     std::int_fast64_t i; //signed integer literal
     double d; //double literal
 };
 
-typedef uint16_t TokenType;
-
-constexpr int BITS = 16; //token bits
-constexpr int BITS_GROUP = 4; //bits for group (16 max). Represents what group token belongs.
-constexpr int BITS_DATA = 4; //bits for data (16 max). Represents how many data tokens follow.
-//remaining 8 bits are for index/value (256 max). Base value in enum list.
-//DDDD GGGG IIII IIII
-constexpr TokenType DATA_MASK = (TokenType)(0xF000); //MMMM 0000 0000 0000
-constexpr TokenType GROUP_MASK = (TokenType)(0x0F00); //0000 MMMM 0000 0000
+constexpr int BITS = 32; //tokenizer type bits
+constexpr int BITS_GROUP = 8; //bits for group. Represents what group token belongs.
+constexpr int BITS_DATA = 8; //bits for data. Represents how many data tokens follow.
+//remaining 16 bits are for index/value. Represents base value/index in enum list.
+//bits in hex: DD GG II II
+constexpr TokenType DATA_MASK = (TokenType)(0xFF'00'00'00);
+constexpr TokenType GROUP_MASK = (TokenType)(0x00'FF'00'00);
 
 
 
-constexpr int DATA_OFFSET = BITS - BITS_DATA; // for 16 bits you need to shift by 12 to fill last 4 bits
-constexpr int GROUP_OFFSET = DATA_OFFSET - BITS_GROUP; // for 16 bits you need to shift by 8
+constexpr int DATA_OFFSET = BITS - BITS_DATA;
+constexpr int GROUP_OFFSET = DATA_OFFSET - BITS_GROUP;
 
 
 //Encode group and data into index
