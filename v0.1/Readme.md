@@ -1,98 +1,139 @@
-# Maturskii
+# maturskii
 
-# Concept
+# concept
+interpreted quick & dirty flexible scripting and hacking-things-together\
+similar to javascript, but generally borrows concepts from many languages
+###### no operators, just functions
 
-Quick & dirty flexible scripting and hacking-things-together language.
+# tokenizer
+tokenization is done in 3 steps:
 
-## Flexible, Quick & Dirty?
+## grouping into words
+Reserved characters, numeric/string literals and identifiers into linear list. space separates but doesnt get included in words. comma (,) does. comments ignored
 
-Dirty because it doesnt save you froom undefined behaviour, and is very prone to it, as it lets users do almost anything.
-You can change some very fundamental parts of the language, such as renaming built in functions and operators.
-Your operators can be symbols or even strings ( '&' vs 'and' )
-?You can even replace the bracket/brace/pharentese symbols to some other symbols or strings.
-But thats what makes it flexible and quick to do small scripts and projects in.
+## bracket/brace/parenthese trees
+everything in {}, [], () is put into a tree containing the words inside. trees get put into a list, so they can be called later by index.
 
-Execute functions in local or global scopes, push things to global stack, and all kinds of other crazy things.
-
-Aims to unify macros and functions to use same or similar syntax.
-
-You can of course do larger projects too but these are the downsides:
-- Not stricly typed, so you dont know what type or form an object is in.
--? No packages/imports
-- The user can easily brake things down the line by changing some fundamental parts of the language.
-- Not the fastest thing around.
--? No declarations, all implicitly declarated so prone to typos
-
-# Specs/Docs
-
-## Reserved chars (includes space):
-(){}[] ,
-
-() same as in c,c#,js..
-<identifier>(){} for functions
-(){} for same scope functions //allow this for named functions too somehow?
-{} for object
-[] for arrays or indexing/attributes
-, like ; in c#, executes previous command or separates
-
-Each operator, built in or not, is just a function object. Some functions are tied into backend, some are user made. You can see and reorder them with the replace operator.
+## tokens
+* identifiers\
+`holds id to identifier. identifier string added to identifiers list`
+* numeric literals\
+`holds numeric value`
+* string literals\
+`holds id to string. string added to strings list`
+* identifier literals\
+`holds id to identifier. identifier added to identifiers list`
+* function calls
+ ###### idk how to represent function calls, maybe holds
+* special (reserved characters and groupings such as ??)
+* compound (bracketed), contains other tokens\
+`holds id to tree`
 
 
-## Comments:
-// /* */
+###### how should a=2-(1+3) get handled? (parentheses for grouping purposes)
+
+## executioner
 
 
-rename function can rename existing and built in functions. in c++ side functions all have string names (built in and not), with a pointer to an action tree of the function.
+# specs/docs
+
+## reserved chars:
+()[]{},#$.
+
+space and newline are separators
+
+, used to execute and separate things
+
+###### possibly also ? if conditionals arent done with functions
 
 
-## Custom operators:
+$ turns string to identifier $'id' or identifier literal $id
 
-//All operators have same presidence
-//bioperator //eg &&
-_&_ && (a,b){
-return and(a,b),
-}),
-*_&_* spaced bioperator//eg and
+var.property\
+var.$property `I D K`\
+var\[$property\] `I D K`\
+var\['property'\]\
+var\[property\] `value of property`
 
-&_ pre operator //eg !
-*&_* spaced pre operator //eg not
+## variables
+all variables are either literal or objects
 
-_& post operator //eg ++
-*_&* spaced post operator
+## literals
+* identifier
+* numbers  `> all floats`
+* strings  `> chars are strings of length 1`
+* functions  `> more on that in #functions`
+* null
+* `> bools are 0 and >0`
 
-& standalone operator, so like a function //eg ;
-*&* spaced standalone operator, so like a function //eg break
+> indexes and bools are internally rounded
 
+## objects
+all objects have intrinsic value (can be literal or object) and properties\
+all properties are objects
 
+## value vs reference
+you can instantiate things as either by value or by reference\
+references act as pointers, but you can set actual value of the object they are refering to
 
+## functions
+functions are also just variables
 
+{} is function body, takes no arguments
 
-//declare bioperator '&'
-_$_ & (a,b){
-    return +(a,b);
-}
+(arg1,arg2){} is a function body and arguments
 
-//space not required
-c = a&b;
+function declaration:\
+```
+:($fn,(arg1,arg2){})
+```
 
-//declare spaced bioperator 'and' (notice two _)
-*_$_* and (a,b){
-    return +(a,b);
-}
+\# executes function in same scope, useful for macros: #fn(),
 
-//space required
-c = a and b;
+###### #{} code block always executed in same scope
 
-//pre operator
-$_ & (a){
-    return !(a);
-}
+function call:\
+`functionName(argument1,argument2,...)`
 
-//no space needed
-c = &a;
+## conditionals
 
-//spaced pre operator
-*&_* and (a){
-    
-}
+###### for starters its only ?(condition,{})
 
+cond?{}, `if condition is >0 (check literals), execute code block`\
+cond??{}, `else if`\
+???{}, `else`
+
+## comments:
+// /\* \*/\
+// have a higher presidence, so // /\* will be a single line comment
+
+## built in functions and objects
+</br>
+
+`=(identifier,value)`\
+sets identifier to value
+
+`:(identifier,value)`\
+set identifier to reference
+
+</br>
+
+`rename(originalName, newName)`\
+rename variable or function
+
+</br>
+
+`+(a,b)`\
+adds a and b\
+if strings, concatenate\
+if numbers, subtract
+> for bools, effectively acts as OR 
+
+`-(a,b)`\
+subtract number b from number a\
+`-(a)`\
+negate number a
+
+`*(a,b)`\
+multiplies numbers a and b
+> for bools, effectively acts as AND

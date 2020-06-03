@@ -4,22 +4,70 @@
 #include <stack>
 #include <string>
 #include <unordered_map>
-#include "Tokens.hpp"
+
+//TokenType Groups:
+#define Token_Identifier 0  // variable, pushes to stack -> string
+#define Token_Complex 1     // (), [], {}, a.b.c -> ComplexType, vector of tokens (separated by , or space/nothing if fn call / assignment with null return)
+#define Token_Literal 2     // literal data (check LiteralType) -> LiteralType, data
+#define Token_BiOperator 3  // : = ^ :: =: ^: > < >= <= == != //Looks at tokens on left and right of itself
+#define Token_PreOperator 4 // & | # //Looks at token right of itself
+#define Token_Call 5        // ret ; ~ //standalone call without need for ()
+
+//Lets say size_t is 32 bit
+//Last 7 bits (of 32) are used to group tokenTypes (group mask: F 1110 00 0000 = FE00 0000 )
+//Last 8th bit (of 32) is used to indicate if the token carries data (group mask: 0 0001 00 0000 = 0100 0000 )
+//Allowing 2^7 (128) SubTokenGroups, Data yes or no, and 2^24 (16777216) TokenGroups
+#define GetTokenGroup(INDEX) ((((unsigned int)INDEX) & 0xFE000000) >> 25)
+#define GetTokenData(INDEX) ((((unsigned int)INDEX) & 0x01000000) >> 24)
+
+enum class TokenType : std::size_t
+{
+
+#define ENCODE_TOKEN(HAS_DATA) (__COUNTER__ | ((GROUP << 25) | (HAS_DATA << 24))) //Encode group into index
+#define Token ENCODE_TOKEN(0)
+#define DataToken ENCODE_TOKEN(1)
+
+#define GROUP Token_Identifier
+    Identifier = DataToken, //identifier
+#undef GROUP
+
+#define GROUP Token_Complex
+    Parenthesized = DataToken, //()
+    Bracketed = DataToken,     //[]
+    Braced = DataToken,        //{}
+    Dotted = DataToken,        // . symbol: box.attrs.color , box.$color.r , box.attrs.area() , array.0
+#undef GROUP
+
+#define GROUP Token_Literal
+    Null = DataToken,              // null
+    LiteralIdentifier = DataToken, // $'test' = test
+    LiteralInteger = DataToken,    // -6 , 456, \0A2E21
+    LiteralDecimal = DataToken,    // 2.3 , -0.2 , .1 , -.321
+    LiteralString = DataToken,     //all strings are multiline, you can use `"' in strings: "`'string'`", `'"string"'`, 'a'
+#undef GROUP
+
+#define GROUP Token_PreOperator
+    IdentifierFrom = Token, // $ symbol: $var -> identifier from value of var (string) MacroSign = Token, // # symbol: #fn(){} , #fn()
+#undef GROUP
 
 
+#undef ENCODE_TOKEN
+#undef Token
+#undef DataToken
+};
 
 //TokenizerState Groups:
 #define TokenizerState_Normal 0
 #define TokenizerState_InComment 1
 #define TokenizerState_InLiteral 2
 
-//Get group from enum value. checks last 7 bits (of 32)
+//Similar to token groups, last 7 bits (of 32) are used to group TokenizerStateGroups
 #define GetTokenizerStateGroup(INDEX) ((((unsigned int)INDEX) & 0xFE000000) >> 25)
 
 enum class TokenizerState : uint_fast32_t
 {
 
-#define State (__COUNTER__ | ((GROUP << 25))) //Encode group into last 7 bits (of 32)
+#define State (__COUNTER__ | ((GROUP << 25))) //Encode group into index
 
 #define GROUP TokenizerState_Normal
     Normal,
@@ -44,6 +92,11 @@ enum class TokenizerState : uint_fast32_t
 
 struct Tokenizer;
 
+union Token {
+    std::size_t ptr;
+    std::intmax_t i;
+    double d;
+};
 
 struct TokenPack
 {

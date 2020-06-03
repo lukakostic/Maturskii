@@ -43,6 +43,9 @@
         "unordered_map": "cpp",
         "cinttypes": "cpp",
         "list": "cpp",
-        "xhash": "cpp"
+        "xhash": "cpp",
+        "bitset": "cpp",
+        "map": "cpp",
+        "xtree": "cpp"
     }
 }
