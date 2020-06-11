@@ -1,0 +1,12 @@
+a = 5
+b = `"test
+m\`e"`
+j = (){print("FUNKCIJA!\n")}
+print(a)
+print('\n')
+a = b
+print(a)
+print('\n')
+j()
+a = j
+a()

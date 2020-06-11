@@ -11,19 +11,19 @@ struct Variable;
 
 
 enum class Type{
-Null,
-Integer,
-Decimal,
-Map,
-Array,
-Function,
-Reference,
-Identifier,
-Type
+  Null,
+  Integer,
+  Decimal,
+  Map,
+  Array,
+  Function,
+  Reference,
+  Identifier,
+  Type
 };
 
 struct Map{
-std::vector<NamedData> pairs;
+  std::vector<NamedData> pairs;
 
 };
 
