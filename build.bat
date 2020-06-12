@@ -1,2 +1,2 @@
 cd %~dp0
-g++ -O2 -o %~dp0\Built\app.exe %~dp0v0\*.cpp
+g++ -static -static-libgcc -static-libstdc++ -O2 -o %~dp0Built\app.exe -I%~dp0v0\ %~dp0v0\*.cpp %~dp0v0\Tokenizer\*.cpp %~dp0v0\Runtime\*.cpp

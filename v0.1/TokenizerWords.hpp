@@ -5,13 +5,13 @@
 #include <string>
 #include <unordered_map>
 
-//TokenType Groups:
+//Token Groups:
 #define TokenWords_Identifier 0 
 #define TokenWords_Reserved 1  // ()[]{},#$.
 #define TokenWords_Literal 2 
 
 //Lets say size_t is 32 bit
-//Last 7 bits (of 32) are used to group tokenTypes (group mask: F 1110 00 0000 = FE00 0000 )
+//Last 7 bits (of 32) are used to group Tokens (group mask: F 1110 00 0000 = FE00 0000 )
 //Last 8th bit (of 32) is used to indicate if the token carries data (group mask: 0 0001 00 0000 = 0100 0000 )
 //Allowing 2^7 (128) SubTokenGroups, Data yes or no, and 2^24 (16777216) TokenGroups
 #define GetTokenGroup(INDEX) ((((unsigned int)INDEX) & 0xFE000000) >> 25)
